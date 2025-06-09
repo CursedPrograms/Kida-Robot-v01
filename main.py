@@ -119,8 +119,8 @@ def main():
             if os.path.exists(script_file_path):
                 try:
                     pygame.mixer.music.load("audio/confirmed.mp3")
-                    pygame.mixer.music.play()
-                    subprocess.run(["python", script_file_path])
+                    pygame.mixer.music.play()                    
+                    subprocess.run([PYTHON_CMD, script_file_path])
                 except Exception as e:
                     print(f"An error occurred while running the script: {e}")
             else:
