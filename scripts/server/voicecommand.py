@@ -26,16 +26,22 @@ if platform.system() == "Windows":
 else:
     PYTHON_CMD = "python3"
 
-COMMANDS = {
-    "chat": lambda: subprocess.run([PYTHON_CMD, "scripts/server/llm-tts-openrouter-googletts.py"]),
-    "talk": lambda: subprocess.run([PYTHON_CMD, "scripts/server/llm-tts-openrouter-googletts.py"]),
-    "voice control": lambda: subprocess.run([PYTHON_CMD, "scripts/server/remotecontrol-voice.py"]),
-    "gamepad control": lambda: subprocess.run([PYTHON_CMD, "scripts/server/remotecontrol-gamepad.py"]),
-    "ssh control": lambda: subprocess.run([PYTHON_CMD, "scripts/server/remotecontrol-ssh.py"]),
-    "obstacle avoidance": lambda: subprocess.run([PYTHON_CMD, "scripts/server/obstacle-avoidance.py"]),
-    "freeroam": lambda: subprocess.run([PYTHON_CMD, "scripts/server/obstacle-avoidance.py"]),
-    "exit": "exit"
-}
+COMMANDS = {}
+
+# Helper to register multiple aliases
+def register_commands(aliases, command_path):
+    for alias in aliases:
+        COMMANDS[alias] = lambda path=command_path: subprocess.run([PYTHON_CMD, path])
+
+# Register aliases
+register_commands(["chat with me", "talk to me", "i want to chat with you"], "scripts/server/llm-tts-openrouter-googletts.py")
+register_commands(["voice control"], "scripts/server/remotecontrol-voice.py")
+register_commands(["gamepad control", "gamepad"], "scripts/server/remotecontrol-gamepad.py")
+register_commands(["ssh control"], "scripts/server/remotecontrol-ssh.py")
+register_commands(["obstacle avoidance", "freeroam"], "scripts/server/obstacle-avoidance.py")
+
+# Special case for 'exit'
+COMMANDS["exit"] = "exit"
 
 # === Voice Control Loop ===
 def listen_and_execute():
@@ -65,7 +71,7 @@ def listen_and_execute():
                 pygame.mixer.music.load("audio/respond.mp3")
                 pygame.mixer.music.play()
                 while pygame.mixer.music.get_busy():
-                pygame.time.Clock().tick(10)
+                    pygame.time.Clock().tick(10)
                 print(f"🚗 Executing: {word}")
                 action()
                 return True
