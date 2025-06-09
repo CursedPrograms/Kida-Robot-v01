@@ -41,14 +41,14 @@ def listen_for_wakeword():
 
             if THRESHOLD_PHRASE in text:
                 print("🚨 Wake word detected!")
-                pygame.mixer.music.load("../../audio/respond.mp3")
+                pygame.mixer.music.load("audio/respond.mp3")
                 pygame.mixer.music.play()
                 while pygame.mixer.music.get_busy():
                     pygame.time.Clock().tick(10)
 
                 # Determine correct Python command based on OS
                 python_cmd = "python3" if sys.platform != "win32" else "python"
-                os.system(f"{python_cmd} voicecommand.py")
+                os.system(f"{python_cmd} scripts/server/voicecommand.py")
                 break
 
         except Exception as e:

@@ -4,6 +4,9 @@ import speech_recognition as sr
 import whisper
 import subprocess
 import platform
+import pygame
+
+pygame.mixer.init()
 
 # === Setup Whisper model ===
 print("🔊 Loading Whisper model...")
@@ -24,11 +27,13 @@ else:
     PYTHON_CMD = "python3"
 
 COMMANDS = {
-    "voice control": lambda: subprocess.run([PYTHON_CMD, "remotecontrol-voice.py"]),
-    "gamepad control": lambda: subprocess.run([PYTHON_CMD, "remotecontrol-gamepad.py"]),
-    "ssh control": lambda: subprocess.run([PYTHON_CMD, "remotecontrol-ssh.py"]),
-    "obstacle avoidance": lambda: subprocess.run([PYTHON_CMD, "obstacle-avoidance.py"]),
-    "freeroam": lambda: subprocess.run([PYTHON_CMD, "obstacle-avoidance.py"]),
+    "chat": lambda: subprocess.run([PYTHON_CMD, "scripts/server/llm-tts-openrouter-googletts.py"]),
+    "talk": lambda: subprocess.run([PYTHON_CMD, "scripts/server/llm-tts-openrouter-googletts.py"]),
+    "voice control": lambda: subprocess.run([PYTHON_CMD, "scripts/server/remotecontrol-voice.py"]),
+    "gamepad control": lambda: subprocess.run([PYTHON_CMD, "scripts/server/remotecontrol-gamepad.py"]),
+    "ssh control": lambda: subprocess.run([PYTHON_CMD, "scripts/server/remotecontrol-ssh.py"]),
+    "obstacle avoidance": lambda: subprocess.run([PYTHON_CMD, "scripts/server/obstacle-avoidance.py"]),
+    "freeroam": lambda: subprocess.run([PYTHON_CMD, "scripts/server/obstacle-avoidance.py"]),
     "exit": "exit"
 }
 
@@ -57,6 +62,10 @@ def listen_and_execute():
                 print("🛑 Voice control session ended.")
                 return False
             else:
+                pygame.mixer.music.load("audio/respond.mp3")
+                pygame.mixer.music.play()
+                while pygame.mixer.music.get_busy():
+                pygame.time.Clock().tick(10)
                 print(f"🚗 Executing: {word}")
                 action()
                 return True
