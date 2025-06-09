@@ -1,0 +1,13 @@
+{
+    "Config": {
+      "AppName": "KIDA: Kinetic Interactive Drive Automaton",
+      "Description": "",
+      "ProjectStructure": {
+        "MainScript": "main.py",
+        "DependenciesScript": "scripts/install-dependencies.py"
+      },
+      "Scripts": {
+
+      }
+    }
+  }
