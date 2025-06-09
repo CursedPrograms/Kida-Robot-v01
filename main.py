@@ -31,7 +31,7 @@ def run_wakeword():
     print("\nNo user input detected.")
     pygame.mixer.music.load("audio/voice-command.mp3")
     pygame.mixer.music.play()
-    time.sleep(2)
+    time.sleep(6)
     script_file_path = os.path.join(current_script_dir, "scripts/server/wakeword.py")
     if os.path.exists(script_file_path):
         try:
