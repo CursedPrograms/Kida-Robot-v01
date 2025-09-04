@@ -24,6 +24,65 @@
 
 # KIDA: Kinetic Interactive Drive Automaton
 
+### Parts:
+
+- Robot Tank Chassis (XiaoR Geek [Recommended!])
+- L298N Motor Driver
+- Rasberry Pi 5
+- Pi 5 Speaker  Hat
+- Pi NVME + AI Hat
+- NVME
+- HAILO 8 (13 TOPS)
+- 1x Pi 5 Nightvision Camera (Slot 0)
+- 1x Pi 5 AI Camera Camera (Slot 1)
+- 2x Pi Camera Holder
+- 2x Ardiuno
+- 1x Motion Detector
+- 2x Ultrasonic Sensor
+- 1 VL53L0X T-o-F Sensor
+- 1x Metal Detector
+- 1x UV Sensor
+- 1x 3 channel line tracker
+- 1 ball tiltswitch
+- 1/2x LED Strip
+- 2x MOSFET Switches (+ 12v LEDs)
+- I2C Devices: 
+-- 3x 16850 Pi UPS*
+
+- Servo Motor
+- 2 x Power Switches
+- 2x 12v DCMotor
+- DuPont Cables
+- 3s 21700 Batteryholder - Connected to buck converter set to 11.5v
+- 3x 21700 Batteries
+- 3x 16850 Batteries
+- 1 USB Microphone
+
+### Electonic Schematic:
+
+#### Motor A (Left)
+L298N Pin	Function	Pi GPIO
+IN1	Direction	GPIO 17
+IN2	Direction	GPIO 27
+ENA	Speed (PWM)	GPIO 18 (hardware PWM capable)*
+
+#### Motor B (Right)
+L298N Pin	Function	Pi GPIO
+IN3	Direction	GPIO 22
+IN4	Direction	GPIO 23
+
+(11.1V)
+
+[12V Battery Pack 3S 21700 Battery 3.7v]
+ ├── + ─────────► L298N VS       (motor power input)
+ ├── + ─────────► LM2596S IN+    (step-down input for Pi)
+ ├── – ─────────► L298N GND
+ └── – ─────────► LM2596S IN–
+
+[LM2596S Output]
+ ├── OUT+ ──────► Pi 5V (GPIO pin 2 [[Not Recommended!] Pi UPS via USB-C cable [Recommended!]])
+ └── OUT– ──────► Pi GND (GPIO pin 6 or 9)
+
 ![Demo Image](https://github.com/CursedPrograms/Kida-Robot-v01/raw/main/images/demo/KIDA-V00%20(1).jpg)
 ![Demo Image](https://github.com/CursedPrograms/Kida-Robot-v01/raw/main/images/demo/KIDA-V00%20(2).jpg)
 
@@ -156,65 +215,6 @@ pip install git+https://github.com/elevenlabs/elevenlabs-python@v3
 
 ### OS:
 Rasberry OS [Recommended!] (you can use any distro you choose)
-
-### Parts:
-
-- Robot Tank Chassis (XiaoR Geek [Recommended!])
-- L298N Motor Driver
-- Rasberry Pi 5
-- Pi 5 Speaker  Hat
-- Pi NVME + AI Hat
-- NVME
-- HAILO 8 (13 TOPS)
-- 1x Pi 5 Nightvision Camera (Slot 0)
-- 1x Pi 5 AI Camera Camera (Slot 1)
-- 2x Pi Camera Holder
-- 2x Ardiuno
-- 1x Motion Detector
-- 2x Ultrasonic Sensor
-- 1 VL53L0X T-o-F Sensor
-- 1x Metal Detector
-- 1x UV Sensor
-- 1x 3 channel line tracker
-- 1 ball tiltswitch
-- 1/2x LED Strip
-- 2x MOSFET Switches (+ 12v LEDs)
-- I2C Devices: 
--- 3x 16850 Pi UPS*
-
-- Servo Motor
-- 2 x Power Switches
-- 2x 12v DCMotor
-- DuPont Cables
-- 3s 21700 Batteryholder - Connected to buck converter set to 11.5v
-- 3x 21700 Batteries
-- 3x 16850 Batteries
-- 1 USB Microphone
-
-### Electonic Schematic:
-
-#### Motor A (Left)
-L298N Pin	Function	Pi GPIO
-IN1	Direction	GPIO 17
-IN2	Direction	GPIO 27
-ENA	Speed (PWM)	GPIO 18 (hardware PWM capable)*
-
-#### Motor B (Right)
-L298N Pin	Function	Pi GPIO
-IN3	Direction	GPIO 22
-IN4	Direction	GPIO 23
-
-(11.1V)
-
-[12V Battery Pack 3S 21700 Battery 3.7v]
- ├── + ─────────► L298N VS       (motor power input)
- ├── + ─────────► LM2596S IN+    (step-down input for Pi)
- ├── – ─────────► L298N GND
- └── – ─────────► LM2596S IN–
-
-[LM2596S Output]
- ├── OUT+ ──────► Pi 5V (GPIO pin 2 [[Not Recommended!] Pi UPS via USB-C cable [Recommended!]])
- └── OUT– ──────► Pi GND (GPIO pin 6 or 9)
 
 ## How to Run:
 
