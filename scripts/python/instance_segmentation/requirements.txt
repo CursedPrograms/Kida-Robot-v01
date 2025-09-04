@@ -1,0 +1,5 @@
+loguru
+opencv-python
+scipy
+lap
+cython_bbox

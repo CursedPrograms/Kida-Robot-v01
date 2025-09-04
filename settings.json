@@ -1,0 +1,7 @@
+{
+  "directories": {
+    "input": "input_images",
+    "output": "output_images"
+  },
+  "reference_image": "reference.jpg"
+}
