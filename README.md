@@ -25,7 +25,7 @@
 # KIDA: Kinetic Interactive Drive Automaton
 
 ![Demo Image](https://github.com/CursedPrograms/Kida-Robot-v01/raw/main/images/demo/KIDA-V00%20(1).jpg)
-
+![Demo Image](https://github.com/CursedPrograms/Kida-Robot-v01/raw/main/images/demo/KIDA-V00%20(2).jpg)
 
 dtparam=rtc_bbat_vchg=3000000
 sudo mount -o remount,rw /boot/firmware
