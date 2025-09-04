@@ -158,24 +158,35 @@ Rasberry OS [Recommended!] (you can use any distro you choose)
 
 - Robot Tank Chassis (XiaoR Geek [Recommended!])
 - L298N Motor Driver
-- Rasberry Pi 5/4
-- Pi Speakers
-- 3x 16850 Pi UPS*
+- Rasberry Pi 5
+- Pi 5 Speaker  Hat
 - Pi NVME + AI Hat
+- NVME
+- HAILO 8 (13 TOPS)
 - 1x Pi 5 Nightvision Camera (Slot 0)
 - 1x Pi 5 AI Camera Camera (Slot 1)
 - 2x Pi Camera Holder
+- 2x Ardiuno
+- 1x Motion Detector
+- 2x Ultrasonic Sensor
+- 1 VL53L0X T-o-F Sensor
+- 1x Metal Detector
+- 1x UV Sensor
+- 1x 3 channel line tracker
+- 1 ball tiltswitch
+- 1/2x LED Strip
+- 2x MOSFET Switches (+ 12v LEDs)
+- I2C Devices: 
+-- 3x 16850 Pi UPS*
+
 - Servo Motor
-- NVME
-- HAILO 13 TOPS
-- 1x Ultrasonic Senser
 - 2 x Power Switches
+- 2x 12v DCMotor
 - DuPont Cables
+- 3s 21700 Batteryholder - Connected to buck converter set to 11.5v
 - 3x 21700 Batteries
-- 3 21700 Sieries Batterholder
-- 3x 16850 Batteries*
+- 3x 16850 Batteries
 - 1 USB Microphone
-- 22 AWG Wire (21700 Battery Pack to L298N)
 
 ### Electonic Schematic:
 
@@ -283,16 +294,44 @@ Unix-like systems (Linux/macOS):
 ## Requirements:
 
 playsound
-openai-whisper 
-sounddevice 
+openai-whisper
+sounddevice==0.5.1
 numpy
-whisper
 SpeechRecognition
 pygame
 requests
 elevenlabs==0.2.26
-torch
+torch==2.6.0
 torchaudio
+gTTS
+soundfile
+sseclient
+RPi.GPIO
+flask
+psutil
+opencv-python
+picamera2
+smbus2
+jinja2
+Werkzeug
+itsdangerous
+click
+pyserial
+ultralytics
+loguru
+scipy==1.9.3
+lap
+cython_bbox
+transformers==4.50.1
+tqdm
+deepface
+pillow
+sounddevice==0.5.1
+tqdm
+tf-keras
+faster-whisper
+
+
 
 <br>
 <div align="center">
